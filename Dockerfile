@@ -19,3 +19,11 @@ RUN pip install jmespath netaddr botocore boto boto3 google-auth pyVim pyVmomi r
 # install latest git
 RUN add-apt-repository ppa:git-core/ppa
 RUN apt-get update -qq && apt-get install -y git
+
+# remove and clean up apt
+RUN add-apt-repository -r "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
+RUN add-apt-repository -r "deb http://packages.cloud.google.com/apt cloud-sdk-xenial main"
+RUN apt autoremove --purge
+RUN rm -rf /var/lib/apt/lists/*
+RUN apt clean
+RUN rm -rf /tmp/*
