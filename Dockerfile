@@ -9,6 +9,7 @@ RUN add-apt-repository "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/
 RUN add-apt-repository "deb http://packages.cloud.google.com/apt cloud-sdk-xenial main"
 
 RUN apt-get update -qq
+RUN apt-get install -y apt-utils
 RUN apt-get install -y google-chrome-stable
 RUN apt-get install -y fontconfig fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-symbola fonts-noto ttf-freefont
 RUN apt-get install -y google-cloud-sdk jq
