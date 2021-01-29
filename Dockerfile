@@ -12,9 +12,11 @@ RUN apt-get update -qq
 RUN apt-get install -y google-chrome-stable
 RUN apt-get install -y fontconfig fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-symbola fonts-noto ttf-freefont
 RUN apt-get install -y google-cloud-sdk jq
-RUN apt-get install -y python3 python3-pip python3-apt libssl-dev
-RUN pip3 install ansible==2.10.3
-RUN pip3 install jmespath netaddr botocore boto boto3 google-auth pyVim pyVmomi requests
+
+# run complex setup
+COPY setup.sh /setup.sh
+RUN chmod a+x /setup.sh
+RUN /setup.sh
 
 # install latest git
 RUN add-apt-repository ppa:git-core/ppa
